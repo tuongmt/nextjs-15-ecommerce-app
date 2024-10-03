@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import { Lora } from "next/font/google";
 import "./globals.css";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const lora = Lora({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | ThuDat Grocery",
-    absolute: "ThuDat Grocery",
+    template: "%s | Tạp hóa Thu Đạt",
+    absolute: "Tạp hóa Thu Đạt",
   },
-  description: "Shopping now!",
+  description: "Mua sắm ngay!",
 };
 
 export default function RootLayout({
@@ -20,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={lora.className}>
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
