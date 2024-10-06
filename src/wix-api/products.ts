@@ -1,4 +1,5 @@
 import { getWixClient } from "@/lib/wix-client.base";
+import { cache } from "react";
 
 type ProductsSort = "last_updated" | "price_asc" | "price_desc";
 
@@ -39,3 +40,23 @@ export async function queryProducts({
 
   return query.find();
 }
+
+// Use cache to reduce duplicate renders
+// Example: Two getProductBySlug calls in the product slug page result in two renders, but with caching, it reduces to one.
+export const getProductBySlug = cache(async (slug: string) => {
+  const wixClient = getWixClient();
+
+  const { items } = await wixClient.products
+    .queryProducts()
+    .eq("slug", slug) // eq === equality
+    .limit(1)
+    .find();
+
+  const product = items[0];
+
+  if (!product || !product.visible) {
+    return null;
+  }
+
+  return product;
+});
