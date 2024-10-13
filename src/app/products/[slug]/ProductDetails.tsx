@@ -1,23 +1,22 @@
 "use client";
 
-import Badge from "@/components/ui/badge";
-import WixImage from "@/components/WixImage";
-import { products } from "@wix/stores";
-import ProductOptions from "./ProductOptions";
-import { useState } from "react";
-import { checkInStock, findVariant } from "@/lib/utils";
-import ProductPrice from "./ProductPrice";
-import ProductMedia from "./ProductMedia";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { InfoIcon } from "lucide-react";
+import AddToCartButton from "@/components/AddToCartButton";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import AddToCartButton from "@/components/AddToCartButton";
+import Badge from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { checkInStock, findVariant } from "@/lib/utils";
+import { products } from "@wix/stores";
+import { InfoIcon } from "lucide-react";
+import { useState } from "react";
+import ProductMedia from "./ProductMedia";
+import ProductOptions from "./ProductOptions";
+import ProductPrice from "./ProductPrice";
 
 interface ProductDetailsProps {
   product: products.Product;
@@ -105,6 +104,8 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             product={product}
             selectedOptions={selectedOptions}
             quantity={quantity}
+            disabled={availableQuantityExceeded || quantity < 1}
+            className="w-full"
           />
         ) : (
           "Hết hàng"
