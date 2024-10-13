@@ -51,12 +51,14 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
     );
     return selectedChoice?.media?.items ?? [];
   });
-
+  
   return (
     <div className="flex flex-col gap-10 md:flex-row lg:gap-20">
       <ProductMedia
         media={
-          !!selectedOptionsMedia ? selectedOptionsMedia : product.media?.items
+          !!selectedOptionsMedia?.length
+            ? selectedOptionsMedia
+            : product.media?.items
         }
       />
       <div className="basis-3/5 space-y-5">
