@@ -9,7 +9,7 @@ export default function Badge({ children, className }: BadgeProps) {
   return (
     <span
       className={cn(
-        "w-fit bg-primary px-2 py-1 text-xs text-primary-foreground",
+        "w-fit bg-primary px-2 py-1 text-xs text-primary-foreground rounded-sm",
         className,
       )}
     >
