@@ -51,7 +51,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
     );
     return selectedChoice?.media?.items ?? [];
   });
-  
+
   return (
     <div className="flex flex-col gap-10 md:flex-row lg:gap-20">
       <ProductMedia
@@ -83,7 +83,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           setSelectedOptions={setSelectedOptions}
         />
         <div className="space-y-1.5">
-          <Label htmlFor="quantity">Quantity</Label>
+          <Label htmlFor="quantity">Số lượng</Label>
           <div className="flex items-center gap-2.5">
             <Input
               name="quantity"
